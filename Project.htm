@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Manager</title>
+        <script src="Script.js">
+            window.onload = display();
+        </script>
+    </head>
+    <body>
+        <h1>Isaac's Media Manager</h1>
+        <nav>
+            <button id="movieButton" href="AddMovie.htm" onclick="openMovieTab(event)">Add Movie</button>
+            <button id="bookButton" href="AddBook.htm" onclick="openBookTab(event)">Add Book</button> 
+        </nav>
+        <div>
+            <table id="movieTable">
+                <thead>
+                    <tr id="mTableHead">
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Review</th>
+                    </tr>
+                </thead>
+                <tbody id="mTableBody">
+                </tbody>
+            </table>
+        </div>
+    </br>
+        <div>
+            <h3>book</h3>
+            <p id="booklist"></p>
+        </div>
+    </body>
+</html>
