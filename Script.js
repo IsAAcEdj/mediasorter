@@ -17,32 +17,31 @@ class Movie {
 }  
 }
 
-function Book(name, description, review) {
+class Book {
+    constructor(name, description, review){
+
     this.name = name;
     this.description = description;
     this.review = review;
+    
     this.returnname = function() {
-        return this.name;
-    };
-    this.returndescription = function() {
-        return this.description;
-    };
-    this.returnreview = function() {
-        return this.review;
-    };
-    toString = function() {
-        this.returnname + ";" + this.returndescription + ";" + this.returnreview
+        return `${this.name}`;
     }
+    this.returndescription = function() {
+        return `${this.description}`;
+    }
+    this.returnreview = function() {
+        return `${this.review}`;
+    }
+}  
 }
 function openMovieTab(event) {
     event.preventDefault();
-    window.location.href="AddMovie.htm";
+    window.location.href="AddMovie.htm"
 }
 function openBookTab(event) {
     event.preventDefault();
-    window.open(
-        'AddBook.htm', '_blank', 'width=600,height=400'
-    )
+    window.location.href="AddBook.htm"
 }
 function newMovie() {
     let storedMovies = localStorage.getItem("moviesList");
@@ -64,10 +63,23 @@ function newMovie() {
     window.location.href = "Project.htm"
 }
 function newBook() {
-    booksList[booksList.length] = Book(document.getElementById("bookName").innerHTML, 
-                                              document.getElementById("description").innerHTML,
-                                              document.getElementById("review").innerHTML);
-    window.close()
+    let storedBooks = localStorage.getItem("booksList");
+
+    let booksList = storedBooks ? JSON.parse(storedBooks) : [];
+
+    const name = document.getElementById("bookName").value
+    const description = document.getElementById("description").value
+    const review = document.getElementById("review").value
+
+   booksList.push({
+    name: name,
+    description: description,
+    review: review
+   })
+
+    
+    localStorage.setItem("booksList", JSON.stringify(booksList))
+    window.location.href = "Project.htm"
 }
 function initializeMovies() {
     moviesNamesList
@@ -77,6 +89,7 @@ const booksList = [];
     document.addEventListener("DOMContentLoaded", function() {
 
         let storedMovies = localStorage.getItem("moviesList");
+        let storedBooks = localStorage.getItem("booksList");
 
         let moviesList = storedMovies ? JSON.parse(storedMovies) : [];
 
