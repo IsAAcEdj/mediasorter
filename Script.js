@@ -1,5 +1,5 @@
 class Movie {
-    constructor(name, description, review){
+    constructor(name, description, review, checked){
 
     this.name = name;
     this.description = description;
@@ -18,7 +18,7 @@ class Movie {
 }
 
 class Book {
-    constructor(name, description, review){
+    constructor(name, description, review, checked){
 
     this.name = name;
     this.description = description;
@@ -60,7 +60,7 @@ function newMovie() {
 
     
     localStorage.setItem("moviesList", JSON.stringify(moviesList))
-    window.location.href = "Project.htm"
+    window.location.href = "index.html"
 }
 function newBook() {
     let storedBooks = localStorage.getItem("booksList");
@@ -79,14 +79,20 @@ function newBook() {
 
     
     localStorage.setItem("booksList", JSON.stringify(booksList))
-    window.location.href = "Project.htm"
+    window.location.href = "index.html"
 }
-function initializeMovies() {
-    moviesNamesList
-}       
-let moviesList = [["Heat", "1995", "Good"]];
-const booksList = [];
+function removeMovie(){
+    let storedMovies = localStorage.getItem("moviesList");
+
+    let moviesList = storedMovies ? JSON.parse("moviesList") : [];
+
+
+}
+     
     document.addEventListener("DOMContentLoaded", function() {
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox'
 
         let storedMovies = localStorage.getItem("moviesList");
         let storedBooks = localStorage.getItem("booksList");
@@ -109,6 +115,8 @@ const booksList = [];
             const tdr = document.createElement("td");
             tdr.textContent = item.review;
             tr.appendChild(tdr);
+
+            tr.appendChild(checkbox);
         
             movieTable.appendChild(tr)
         });
