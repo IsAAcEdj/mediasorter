@@ -81,7 +81,7 @@ function newBook() {
     localStorage.setItem("booksList", JSON.stringify(booksList))
     window.location.href = "index.html"
 }
-function removeMovie(){
+function removeMovie() {
     let storedMovies = localStorage.getItem("moviesList");
 
     let moviesList = storedMovies ? JSON.parse("moviesList") : [];
