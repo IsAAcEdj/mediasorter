@@ -4,7 +4,8 @@ class Movie {
     this.name = name;
     this.description = description;
     this.review = review;
-    
+    this.checked = false;
+
     this.returnname = function() {
         return `${this.name}`;
     }
@@ -13,6 +14,12 @@ class Movie {
     }
     this.returnreview = function() {
         return `${this.review}`;
+    }
+    this.check = function() {
+        this.checked = true;
+    }
+    this.uncheck = function() {
+        this.checked = false;
     }
 }  
 }
@@ -23,6 +30,7 @@ class Book {
     this.name = name;
     this.description = description;
     this.review = review;
+    this.checked = false
     
     this.returnname = function() {
         return `${this.name}`;
@@ -32,6 +40,12 @@ class Book {
     }
     this.returnreview = function() {
         return `${this.review}`;
+    }
+    this.check = function() {
+        this.checked = true;
+    }
+    this.uncheck = function() {
+        this.checked = false;
     }
 }  
 }
@@ -88,36 +102,44 @@ function removeMovie() {
 
 
 }
-     
-    document.addEventListener("DOMContentLoaded", function() {
 
-        const checkbox = document.createElement('input');
+const checkbox = document.createElement('input');
         checkbox.type = 'checkbox'
+        checkbox.checked = item.check
 
-        let storedMovies = localStorage.getItem("moviesList");
-        let storedBooks = localStorage.getItem("booksList");
+const checkboxes = document.querySelectorAll(checkbox);
 
-        let moviesList = storedMovies ? JSON.parse(storedMovies) : [];
+if (anyChecked) {
+    removeMovie.removeAttribute(hidden)
+}
 
-        let movieTable = document.getElementById("mTableBody");
-
-        moviesList.forEach(item => {
-            const tr = document.createElement("tr");
-
-            const tdn = document.createElement("td");
-            tdn.textContent = item.name;
-            tr.appendChild(tdn);
-
-            const tdd = document.createElement("td");
-            tdd.textContent = item.description;
-            tr.appendChild(tdd);
-
-            const tdr = document.createElement("td");
-            tdr.textContent = item.review;
-            tr.appendChild(tdr);
-
-            tr.appendChild(checkbox);
+     
+document.addEventListener("DOMContentLoaded", function() {
         
-            movieTable.appendChild(tr)
-        });
+    let storedMovies = localStorage.getItem("moviesList");
+    let storedBooks = localStorage.getItem("booksList");
+
+    let moviesList = storedMovies ? JSON.parse(storedMovies) : [];
+
+    let movieTable = document.getElementById("mTableBody");
+
+    moviesList.forEach(item => {
+        const tr = document.createElement("tr");
+
+        const tdn = document.createElement("td");
+        tdn.textContent = item.name;
+        tr.appendChild(tdn);
+
+        const tdd = document.createElement("td");
+        tdd.textContent = item.description;
+        tr.appendChild(tdd);
+
+        const tdr = document.createElement("td");
+        tdr.textContent = item.review;
+        tr.appendChild(tdr);
+
+        tr.appendChild(checkbox);
+        
+        movieTable.appendChild(tr)
     });
+});
