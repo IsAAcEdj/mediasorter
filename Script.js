@@ -107,11 +107,11 @@ const checkbox = document.createElement('input');
         checkbox.type = 'checkbox'
         checkbox.checked = item.check
 
-const checkboxes = document.querySelectorAll(checkbox);
-
-if (anyChecked) {
-    removeMovie.removeAttribute(hidden)
+const checkboxes = document.querySelectorAll('input[type:"checkbox"][name="checkbox"]:checked') != null;
+if(checkboxes) {
+    removeMovie.removeAttribute(hidden);
 }
+
 
      
 document.addEventListener("DOMContentLoaded", function() {
