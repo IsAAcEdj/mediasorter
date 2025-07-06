@@ -114,13 +114,6 @@ function removeMovie() {
 }
 
 
-
-const checkboxes = document.querySelectorAll('input[type:"checkbox"][name="checkbox"]:checked') != null;
-if(checkboxes) {
-    removeMovie.removeAttribute(hidden);
-}
-
-
      
 document.addEventListener("DOMContentLoaded", function() {
         
