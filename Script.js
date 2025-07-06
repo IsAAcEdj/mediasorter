@@ -100,6 +100,16 @@ function removeMovie() {
 
     let moviesList = storedMovies ? JSON.parse("moviesList") : [];
 
+    const row = document.querySelectorAll('#myTable tr');
+
+    for(let i = row.length - 1; i >= 0; i--) {
+        const checkboxchecked = row[i].querySelector('input[type="checkbox"]');
+
+        if(checkboxchecked && checkboxchecked.checked) {
+            moviesList.splice(i, 1);
+        }
+    }
+    localStorage.setItem("moviesList", JSON.stringify(moviesList));
 
 }
 
