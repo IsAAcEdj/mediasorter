@@ -116,6 +116,8 @@ function removeMovie() {
 
      
 document.addEventListener("DOMContentLoaded", function() {
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox';
         
     let storedMovies = localStorage.getItem("moviesList");
     let storedBooks = localStorage.getItem("booksList");
