@@ -116,8 +116,7 @@ function removeMovie() {
 
      
 document.addEventListener("DOMContentLoaded", function() {
-    const checkbox = document.createElement('input')
-    checkbox.type = 'checkbox';
+    
         
     let storedMovies = localStorage.getItem("moviesList");
     let storedBooks = localStorage.getItem("booksList");
@@ -127,6 +126,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let movieTable = document.getElementById("mTableBody");
 
     moviesList.forEach(item => {
+        const checkbox = document.createElement('input')
+        checkbox.type = 'checkbox';
+
         const tr = document.createElement("tr");
 
         const tdn = document.createElement("td");
