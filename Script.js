@@ -103,10 +103,12 @@ function removeMovies(event) {
     const rows = document.querySelectorAll('#myTable tr');
 
     for(let row = rows.length - 1; row >= 0; row--) {
-        const checkboxchecked = row.querySelector('input[type="checkbox"]');
+        const checkboxchecked = rows[row].querySelector('input[type="checkbox"]');
 
         if(checkboxchecked && checkboxchecked.checked) {
             moviesList.splice(row, 1);
+
+            row.remove();
         }
     }
     localStorage.setItem("moviesList", JSON.stringify(moviesList));
