@@ -98,15 +98,15 @@ function newBook() {
 function removeMovies() {
     let storedMovies = localStorage.getItem("moviesList");
 
-    let moviesList = storedMovies ? JSON.parse(storedMovies) : [];
+    let moviesList = JSON.parse(storedMovies);
 
-    const row = document.querySelectorAll('#myTable tr');
+    const rows = document.querySelectorAll('#myTable tr');
 
-    for(let i = row.length - 1; i >= 0; i--) {
-        const checkboxchecked = row[i].querySelector('input[type="checkbox"]');
+    for(let row = rows.length - 1; row >= 0; row--) {
+        const checkboxchecked = row.querySelector('input[type="checkbox"]');
 
         if(checkboxchecked && checkboxchecked.checked) {
-            moviesList.splice(i, 1);
+            moviesList.splice(row, 1);
         }
     }
     localStorage.setItem("moviesList", JSON.stringify(moviesList));
