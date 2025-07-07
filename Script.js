@@ -95,7 +95,7 @@ function newBook() {
     localStorage.setItem("booksList", JSON.stringify(booksList))
     window.location.href = "index.html"
 }
-function removeMovies() {
+function removeMovies(event) {
     let storedMovies = localStorage.getItem("moviesList");
 
     let moviesList = JSON.parse(storedMovies);
