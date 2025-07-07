@@ -98,7 +98,7 @@ function newBook() {
 function removeMovies() {
     let storedMovies = localStorage.getItem("moviesList");
 
-    let moviesList = storedMovies ? JSON.parse("moviesList") : [];
+    let moviesList = storedMovies ? JSON.parse(storedMovies) : [];
 
     const row = document.querySelectorAll('#myTable tr');
 
