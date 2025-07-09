@@ -102,7 +102,7 @@ function removeMovies(event) {
 
     const rows = document.querySelectorAll('#movieTable tr');
 
-    for(let row = 0; row < storedMovies.length; row++) {
+    for(let row = 0; row < storedMovies.length - 1 ; row++) {
         const checkboxchecked = rows[row].querySelector('input[type="checkbox"]');
 
         if(checkboxchecked && checkboxchecked.checked) {
