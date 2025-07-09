@@ -102,11 +102,11 @@ function removeMovies(event) {
 
     const rows = document.querySelectorAll('#myTable tr');
 
-    for(let row = rows.length - 1; row >= 0; row--) {
+    for(let row = 0; row < storedMovies.length; row++) {
         const checkboxchecked = rows[row].querySelector('input[type="checkbox"]');
 
         if(checkboxchecked && checkboxchecked.checked) {
-            moviesList.splice(row, 1);
+            localStorage.removeItem(row)
 
             row.remove();
         }
