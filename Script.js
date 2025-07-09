@@ -107,8 +107,6 @@ function removeMovies(event) {
 
         if(checkboxchecked && checkboxchecked.checked) {
             localStorage.removeItem(row)
-
-            row.remove();
         }
     }
     localStorage.setItem("moviesList", JSON.stringify(moviesList));
