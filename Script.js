@@ -100,7 +100,7 @@ function removeMovies(event) {
 
     let moviesList = JSON.parse(storedMovies);
 
-    const rows = document.querySelectorAll('#myTable tr');
+    const rows = document.querySelectorAll('#movieTable tr');
 
     for(let row = 0; row < storedMovies.length; row++) {
         const checkboxchecked = rows[row].querySelector('input[type="checkbox"]');
